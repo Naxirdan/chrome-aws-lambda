@@ -1,9 +1,11 @@
-import { Page } from 'puppeteer-core';
+import { Page, HTTPRequest } from 'puppeteer-core';
 
 export type Hook = (page: Page) => Promise<Page>;
 export type KeysOfType<T, V> = { [K in keyof T]: T[K] extends V ? K : never }[keyof T]
 export type Prototype<T = any> = T & { prototype: T };
 export type Writeable<T> = { -readonly [P in keyof T]: T[P] };
+export type Page = () => Page;
+export type HTTPRequest = () => HTTPRequest;
 
 declare module 'puppeteer-core' {
   interface Browser {
